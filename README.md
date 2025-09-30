@@ -1,24 +1,27 @@
+![rubaitul-azad-HSACbYjZsqQ-unsplash](https://github.com/user-attachments/assets/a339a98c-72a2-4bdd-bae5-50a292b3e648)
+
+
 # Docker-iac-network-deployment
-This project simulates a small-scale infrastructure using Docker and IaC concepts. It includes a web and DNS service on a shared network, Ubuntu clients with firewall rules, and a segregated backend network with a MySQL database.
+This project simulates a small-scale infrastructure using Docker and Infrastructure as Code (IaC) principles. It features web and DNS services, multiple Ubuntu clients with firewall rules, and a segregated backend network with a MySQL database to demonstrate best practices in network segmentation and container orchestration.
 
 ---
 
 ## Table of Content
 
-1. [Project Overview](#project-overview)
-2. [Architecture and Topology](#architecture-and-topology)
-3. [Components](#components)
-4. [Deployment](#deployment)
-5. [Usage and Testing](#usage-and-testing)
-6. [Future Improvements](#future-improvements)
-7. [Repository Structure](#repository-structure)
-8. [Author](#author)
+- [Project Overview](#project-overview)
+- [Architecture and Topology](#architecture-and-topology)
+- [Components](#components)
+- [Deployment](#deployment)
+- [Usage and Testing](#usage-and-testing)
+- [Future Improvements](#future-improvements)
+- [Repository Structure](#repository-structure)
+- [Author](#author)
 
 ---
 
 ## 📘 Project Overview
 
-This repository provides a containerized lab environment using Docker Compose to simulate basic infrastructure with network segmentation. It serves as a demonstration of IaC principles using Docker.
+This repository provides a containerized lab environment using Docker Compose to simulate basic infrastructure with proper network segmentation. It serves as a demonstration of Infrastructure as Code (IaC) principles using Docker, making it easy to replicate, extend, or modify the setup for learning or demonstration purposes.
 
 ---
 
@@ -40,12 +43,12 @@ The provided Docker Compose file also serves as a flexible template for extendin
 ## Components
 
 
-| Component       | Role                             |
-|----------------|----------------------------------|
-| NGINX          | Web server (HTTP)                |
-| Pi-hole        | DNS server for internal network  |
-| Ubuntu Clients | Simulated client machines        |
-| MySQL          | Example backend service          |
+| Component       | Role                              |
+|----------------|-----------------------------------|
+| NGINX          | Web server (HTTP)                 |
+| Pi-hole        | DNS server for internal network   |
+| Ubuntu Clients | Simulated client machines         |
+| MySQL          | Example backend service           |
 
 ---
 
@@ -57,21 +60,15 @@ The provided Docker Compose file also serves as a flexible template for extendin
 
 - Prior to deployment, all services were confirmed to be installed and operational.
 To install Docker Desktop, follow the official [installation guide](https://docs.docker.com/desktop/).
-- Once installed, startet the Docker service:
+- Once installed, start the Docker service:
   ```bash
   sudo systemctl start docker
-  ```
-  Enable the service to start automatically on boot:
-  ```bash
   sudo systemctl enable docker
-  ```
-  To check the status of the Docker service:
-  ```bash
   sudo systemctl status docker
   ```
 - Docker Compose uses a YAML file to define and manage multi-container applications, allowing us to deploy the entire infrastructure quickly and efficiently.
 
-  The deployment YAML file is provided [here](/doc).
+  The full deployment YAML file is provided [here](/doc).
   > **Note:** Before deploying, make sure Docker Desktop is up and running.
 
 - To deploy the infrastructure:
@@ -130,7 +127,8 @@ Other potential improvements:
 │
 ├── scripts/                     
 │   ├── install-nftables.sh
-│   └── deploy.sh                
+│   └── rules.nft
+│       └── rules.sh             
 │
 ├── docs/                        
 │   ├── topology-diagram.png
@@ -147,3 +145,5 @@ Other potential improvements:
 
 ## Author
 [nachogtan](https://github.com/nachogtan)
+
+Feel free to reach out or contribute to the project.
