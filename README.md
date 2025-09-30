@@ -22,7 +22,7 @@ This repository provides a containerized lab environment using Docker Compose to
 
 ---
 
-## 🧱 Architecture and Topology
+## Architecture and Topology
 
 The architecture follows recommended network segmentation practices for production environments. In this scenario, all services and clients within the frontend network are intentionally isolated from the database. However, a MySQL container is included to demonstrate important networking principles, such as segmentation and access control.
 
@@ -37,7 +37,7 @@ The provided Docker Compose file also serves as a flexible template for extendin
 
 ---
 
-## 🔧 Components
+## Components
 
 
 | Component       | Role                             |
@@ -74,3 +74,27 @@ To install Docker Desktop, follow the official [installation guide](https://docs
   The deployment YAML file is provided [here](/doc).
   > **Note:** Before deploying, make sure Docker Desktop is up and running.
 
+- To deploy the infrastructure:
+  ```bash
+  docker compose -d
+  ```
+
+## Usage
+
+Once the environment is up and running, you can list the running containers with:
+```bash
+docker ps
+```
+Using the container name, you can connect to any of the clients like this:
+```bash
+docker exec -it <client> bash
+```
+Once inside the client shell, you can test the NGINX web server by curling the hosted website:
+```bash
+curl http://web
+```
+This should return the default NGINX page or your custom content, confirming the service is running properly.
+
+To access the Pi-hole gui console, enter `http://localhost:8081/admin/` on your browser.
+
+<img width="750" height=auto alt="Screenshot_20250930_164137" src="https://github.com/user-attachments/assets/e5268e86-e08c-424d-a3ae-4680f87b7348" />
