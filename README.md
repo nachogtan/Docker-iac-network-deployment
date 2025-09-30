@@ -11,7 +11,8 @@ This project simulates a small-scale infrastructure using Docker and IaC concept
 4. [Deployment](#deployment)
 5. [Usage and Testing](#usage-and-testing)
 6. [Future Improvements](#future-improvements)
-7. [License](#license)
+7. [Repository Structure](#repository-structure)
+8. [Author](#author)
 
 ---
 
@@ -106,3 +107,24 @@ http://localhost:8081/admin/
 ---
 
 ## Future Improvements
+
+Now that the networks and services are fully deployed and operational, additional services can be integrated.
+
+For example, a backend API could be added to allow client containers to securely access the MySQL database. This architecture could be used as a foundation for a typical business solution, where employees (clients) need controlled and secure access to customer data.
+
+Other potential improvements:
+- Add logging and monitoring services (e.g., Prometheus, Grafana)
+- Implement authentication for accessing internal services
+- Automate testing with scripts
+
+---
+
+## Repository Structure
+
+```bash
+```
+
+---
+
+## Author
+[nachogtan](https://github.com/nachogtan)
