@@ -122,6 +122,25 @@ Other potential improvements:
 ## Repository Structure
 
 ```bash
+│
+├── docker-compose.yml           
+│
+├── html/                        
+│   └── index.html
+│
+├── scripts/                     
+│   ├── install-nftables.sh
+│   └── deploy.sh                
+│
+├── docs/                        
+│   ├── topology-diagram.png
+│   ├── nginx-test.png
+│   ├── pihole-console.png
+│   ├── docker-desktop-containers.png
+│   └── terminal-output.png
+│
+├── README.md        
+└── LICENSE          
 ```
 
 ---
