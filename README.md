@@ -102,3 +102,7 @@ http://localhost:8081/admin/
 ```
 
 <img width="750" height=auto alt="Screenshot_20250930_164137" src="https://github.com/user-attachments/assets/e5268e86-e08c-424d-a3ae-4680f87b7348" />
+
+---
+
+## Future Improvements
