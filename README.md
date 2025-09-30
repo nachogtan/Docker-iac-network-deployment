@@ -9,10 +9,9 @@ This project simulates a small-scale infrastructure using Docker and IaC concept
 2. [Architecture and Topology](#architecture-and-topology)
 3. [Components](#components)
 4. [Deployment](#deployment)
-5. [Usage](#usage)
-6. [Testing](#testing)
-7. [Future Improvements](#future-improvements)
-8. [License](#license)
+5. [Usage and Testing](#usage-and-testing)
+6. [Future Improvements](#future-improvements)
+7. [License](#license)
 
 ---
 
@@ -33,7 +32,7 @@ The provided Docker Compose file also serves as a flexible template for extendin
   - **Backend Network**: Contains a MySQL database container (not used functionally, for demo purposes only).
 - Ubuntu clients are configured with `nftables` during deployment for firewall configuration.
 
-![docke_topology](https://github.com/user-attachments/assets/c2485dc8-6cfa-4a74-aca8-9865f1453b02)
+![docker-topology](https://github.com/user-attachments/assets/537eb0bb-6cb2-4e95-a984-f2d3a40f8a42)
 
 ---
 
@@ -79,7 +78,7 @@ To install Docker Desktop, follow the official [installation guide](https://docs
   docker compose -d
   ```
 
-## Usage
+## Usage and Testing
 
 Once the environment is up and running, you can list the running containers with:
 ```bash
@@ -95,6 +94,11 @@ curl http://web
 ```
 This should return the default NGINX page or your custom content, confirming the service is running properly.
 
-To access the Pi-hole gui console, enter `http://localhost:8081/admin/` on your browser.
+<img width="505" height="151" alt="Screenshot_20250930_165619" src="https://github.com/user-attachments/assets/53ba684f-7c43-4d88-a5ee-e92567e32518" />
+
+To access the Pi-hole admin interface, open the following URL in your browser:
+```bash
+http://localhost:8081/admin/
+```
 
 <img width="750" height=auto alt="Screenshot_20250930_164137" src="https://github.com/user-attachments/assets/e5268e86-e08c-424d-a3ae-4680f87b7348" />
