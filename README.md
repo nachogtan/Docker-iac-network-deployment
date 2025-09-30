@@ -95,7 +95,7 @@ curl http://web
 ```
 This should return the default NGINX page or your custom content, confirming the service is running properly.
 
-<img width="505" height="151" alt="Screenshot_20250930_165619" src="https://github.com/user-attachments/assets/53ba684f-7c43-4d88-a5ee-e92567e32518" />
+<img width="750" height=auto alt="Screenshot_20250930_204329-1" src="https://github.com/user-attachments/assets/cfd88f56-e4e6-4628-a536-4b77d1112f1f" />
 
 To access the Pi-hole admin interface, open the following URL in your browser:
 ```bash
