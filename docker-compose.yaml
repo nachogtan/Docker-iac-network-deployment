@@ -1,0 +1,120 @@
+
+name: nginx_lab
+
+services:
+  web: 
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    networks:
+      - web-lab-front
+
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    environment:
+      TZ: <timezone>
+      WEBPASSWORD: <password>
+      DNSMASQ_LISTENING: all
+    volumes:
+      - ./pihole/etc-pihole:/etc/pihole
+      - ./pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+    ports:
+      - "8053:53/tcp"
+      - "8053:53/udp"
+      - "8081:80"
+    networks:
+      web-lab-front:
+        ipv4_address: 192.168.40.53
+    restart: unless-stopped    
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: <password>
+      MYSQL_DATABASE: <database_name>
+      MYSQL_USER: <user>
+      MYSQL_PASSWORD: <password>
+    networks:
+      - db-lab-back
+
+  machine-1:
+    depends_on:
+      - pihole
+    image: ubuntu:latest
+    networks: 
+      web-lab-front:
+        ipv4_address: 192.168.40.12
+    dns:
+      - 192.168.40.53
+    volumes:
+      - ./scripts/:/scripts/:ro
+    command: /bin/bash -c "bash /scripts/init-nftables.sh"
+
+  machine-2:
+    depends_on: 
+      - pihole
+    image: ubuntu:latest
+    networks:
+      web-lab-front:
+        ipv4_address: 192.168.40.13
+    dns:
+      - 192.168.40.53
+    volumes:
+      - ./scripts/:/scripts/:ro
+    command: /bin/bash -c "bash /scripts/init-nftables.sh"
+
+  machine-3:
+    depends_on: 
+      - pihole
+
+    image: ubuntu:latest
+    networks: 
+      web-lab-front:
+        ipv4_address: 192.168.40.14
+    dns:
+      - 192.168.40.53
+    volumes:
+      - ./scripts/:/scripts/:ro
+    command: /bin/bash -c "bash /scripts/init-nftables.sh"
+
+  machine-4:
+    depends_on: 
+      - pihole
+    image: ubuntu:latest
+    networks:
+      web-lab-front:
+        ipv4_address: 192.168.40.15
+    dns:
+      - 192.168.40.53
+    volumes:
+      - ./scripts/:/scripts/:ro
+    command: /bin/bash -c "bash /scripts/init-nftables.sh"
+
+  machine-5:
+    depends_on: 
+      - pihole
+    image: ubuntu:latest
+    networks:
+      web-lab-front:
+        ipv4_address: 192.168.40.16
+    dns:
+      - 192.168.40.53
+    volumes:
+      - ./scripts/:/scripts/:ro
+    command: /bin/bash -c "bash /scripts/init-nftables.sh"
+
+networks:
+  web-lab-front:
+    driver: bridge
+    ipam: 
+      config: 
+        - subnet: 192.168.40.0/24
+
+  db-lab-back:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.30.0/24 
